@@ -93,6 +93,9 @@ RUN sshpass -p "$PI_PASSWORD" ssh -o PreferredAuthentications=password -o Strict
 # host: unpack sysroot.tar
 WORKDIR /z2w/sysroot/
 RUN tar -xvf sysroot.tar
+# host: fix symlinks
+WORKDIR /z2w/
+RUN symlinks -rc sysroot
 
 # host: cross-compile Qt (12min)
 WORKDIR /z2w/targetbuild
