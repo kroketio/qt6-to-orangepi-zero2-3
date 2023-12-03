@@ -1,13 +1,13 @@
 FROM ubuntu:22.04
 
-# PI_USER needs to be root
-ARG PI_HOST=192.168.1.12
+# PI_USER needs to be roott
+ARG PI_HOST=192.168.0.8
 ARG PI_USER=root
 ARG PI_PASSWORD=orangepi
 
 ARG THREADS=8
 ARG QT_VERSION=6.6.0
-ARG MODULES=qtdeclarative,qtsvg,qtmultimedia,qtquick3d,qtlocation,qtsensors,qtconnectivity,qt3d,qtshadertools,qtimageformats,qtwebsockets,qtcharts,qtgraphs,qthttpserver,qtvirtualkeyboard,qtbase,qtpositioning
+ARG MODULES=qtdeclarative,qtsvg,qtmultimedia,qtquick3d,qtlocation,qtsensors,qtconnectivity,qt3d,qtshadertools,qtimageformats,qtwebsockets,qtcharts,qtgraphs,qthttpserver,qtvirtualkeyboard,qtbase,qtpositioning,qt5compat
 ENV SOURCE_DATE_EPOCH=1397818193
 
 # host: requirements
@@ -30,8 +30,8 @@ RUN apt update && \
     libxi-dev libxrender-dev libxcb1-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev \
     libxcb-icccm4-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-render-util0-dev \
     libxcb-util-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev libatspi2.0-dev \
-    libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev zlib1g-dev libpng-dev libpng-dev libqrencode-dev libevent-dev && \
-    rm -rf /var/lib/apt/lists/*
+    libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev zlib1g-dev libpng-dev libpng-dev libqrencode-dev libevent-dev \
+    libvulkan-dev spirv-tools strace && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /z2w/
 
